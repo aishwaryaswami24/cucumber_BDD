@@ -1,0 +1,22 @@
+{
+  "name": "cucumber_bdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js --config cucumber.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+ 
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.14.1"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
