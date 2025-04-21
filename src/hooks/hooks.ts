@@ -1,4 +1,4 @@
-import { After,Before } from "@cucumber/cucumber";
+import { After,Before, Status } from "@cucumber/cucumber";
 import { chromium, Browser, Page } from "@playwright/test";
 import { pageFixture } from "./pageFixture";
 
@@ -12,7 +12,13 @@ Before(async function () {
     pageFixture.page = page;
 })
 
-After(async function () {
+After(async function ({pickle, result}) {
+    if (result?.status === Status.FAILED) {
+
+        // Take a screenshot if the test failed
+        const screenshot = await page.screenshot({path:` 'screenshots',${pickle.name}.png`});
+        this.attach(screenshot, 'image/png');
+    }
     await page.close();
     await browser.close();
 
